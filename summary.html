@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/img/CapaOne.svg" type="image/x-icon">
+    <link rel="stylesheet" href="summary.css">
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="./templates/footer.css">
+    <link rel="stylesheet" href="./templates/header.css">
+    <link rel="stylesheet" href="./template.css">
+    <script src="./mini_backend.js"></script>
+    <script src="./js/template.js"></script>
+    <script src="./js/summary.js"></script>
+
+    <title>Join-Summary</title>
+</head>
+
+
+<body id="body" onload="init(); includeHTML()">
+    <div id="overlay" class="d-none" onclick="removeOverlay()"></div>
+    <header w3-include-html="templates/header.html"></header>
+    <main>
+        <div class="headline-mobile-container">
+            <p id="headline-mobile">Kanban Project Management Tool</p>
+        </div>
+
+        <section class="header-container">
+            <h1>Summary</h1>
+            <div class="blue-line-vertical"></div>
+            <h2>Everything in a nutshell!</h2>
+            <div class="blue-line-horizontal"></div>
+        </section>
+
+        <section class="main-container">
+            <div>
+                <div class="task-container">
+                    <a href="board.html" class="task">
+                        <h1 id="tasksInBoard"></h1>
+                        <p>Tasks in<br>Board</p>
+                    </a>
+                    <a href="board.html" class="task">
+                        <h1 id="tasksInProgress"></h1>
+                        <p>Tasks in<br>Progress</p>
+                    </a>
+                    <a href="board.html" class="task">
+                        <h1 id="awaitingFeedback"></h1>
+                        <p>Awaiting<br>Feedback</p>
+                    </a>
+                </div>
+                <div>
+                    <a href="board.html" class="urgency">
+                        <div class="urgent">
+                            <img src="./assets/img/urgency-icon.svg">
+                            <div class="center">
+                                <h1 id="urgent"></h1>
+                                <p>Urgent</p>
+                            </div>
+                        </div>
+                        <div class="grey-line"></div>
+                        <div class="urgent-date">
+                            <h2 id="date"></h2>
+                            <p>Upcoming Deadline</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="todo-container">
+                    <a href="board.html" class="todo pencil">
+                        <svg width="70" height="70" viewBox="0 0 70 70" fill="none">
+                            <circle cx="35.25" cy="35" r="34.5" fill="#2A3647" />
+                            <path
+                                d="M31.6156 47.262L26.0508 43.8847L40.211 20.553C40.7841 19.6087 42.0141 19.3078 42.9584 19.8809L45.1037 21.1829C46.0479 21.756 46.3488 22.986 45.7758 23.9303L31.6156 47.262Z"
+                                fill="white" />
+                            <path
+                                d="M30.94 48.3749L25.3752 44.9976L26.2314 48.4972C26.3626 49.0337 26.9039 49.3622 27.4403 49.231L30.94 48.3749Z"
+                                fill="white" />
+                        </svg>
+                        <div class="center">
+                            <h1 id="toDo"></h1>
+                            <p>To-do</p>
+                        </div>
+                    </a>
+                    <a href="board.html" class="todo check">
+                        <svg width="70" height="70" viewBox="0 0 70 70" fill="none">
+                            <circle cx="35.25" cy="35" r="34.5" fill="#2A3647" />
+                            <path d="M20.2783 35.0001L31.5071 46.0662L50.2217 23.9341" stroke="white" stroke-width="7"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <div class="center">
+                            <h1 id="done"></h1>
+                            <p>Done</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="greeting-container" class="greeting-container">
+                <div id="greeting" class="greeting-time"></div>
+                <div id="greetingName" class="greeting-name"></div>
+            </div>
+        </section>
+
+    </main>
+    <footer w3-include-html="templates/footer.html"></footer>
+</body>
+
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board</title>
+    <link rel="shortcut icon" href="./assets/img/CapaOne.svg" type="image/x-icon">
+    <link rel="stylesheet" href="./templates/footer.css">
+    <link rel="stylesheet" href="./templates/header.css">
+    <link rel="stylesheet" href="./template.css">
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="board.css">
+    <link rel="stylesheet" href="add_task.css">
+    <script src="./mini_backend.js"></script>
+    <script src="./js/template.js"></script>
+    <script src="./js/board.js"></script>
+    <script src="./js/boardTask.js"></script>
+    <script src="./js/boardDragAndDrop.js"></script>
+    <script src="./js/boardHTML.js"></script>
+    <script src="./js/add_task.js"></script>
+</head>
+
+<body id="body" onload="init(), loadBackend()">
+    <div id="overlay" class="d-none" onclick="removeOverlay()"></div>
+    <header w3-include-html="templates/header.html">
+    </header>
+    <main id="main">
+        <div class="headline-mobile-container">
+            <p id="headline-mobile">Kanban Project Management Tool</p>
+        </div>
+        <div class="board-header">
+            <div class="board-header-alignment">
+                <p class="board-headline">Board</p>
+                <a class="board-create-new-task-btn" onclick="saveTaskStatusFromBoard('toDo')">
+                    <img class="board-create-img" src="./assets/img/Vector13(2).svg">
+                    <img class="board-create-img" src="./assets/img/Vector14(2).svg">
+                </a>
+            </div>
+            <div class="add-task-container">
+                <div>
+                    <input onkeyup="searchTasks()" onkeypress="return (event.charCode == 32 || event.charCode > 64 && 
+                    event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" id="find-task-input"
+                        class="find-task-input" type="text" placeholder="Find task">
+                    <img class="find-task-img1" src="./assets/img/find-task-input-vertical-bar.svg">
+                    <img class="find-task-img2" src="./assets/img/input-search-icon.svg">
+                </div>
+                <a onclick="saveTaskStatusFromBoard('toDo')" class="board-add-task-btn" >
+                    <p>Add task</p>
+                    <div>
+                        <svg width="17" height="3" viewBox="0 0 17 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 1.6416L1 1.6416" stroke="white" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                        <svg width="3" height="17" viewBox="0 0 3 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1.5 1V16" stroke="white" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="board-container">
+            <div>
+                <div href="./add_task.html" class="board-headlines" onclick="saveTaskStatusFromBoard('toDo')">
+                    <p>To do</p>
+                    <div>
+                        <svg width="18" height="3" viewBox="0 0 18 3" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.5 1.1416L1.5 1.1416" stroke="#2A3647" stroke-width="2"
+                                stroke-linecap="round" />
+                        </svg>
+                        <svg width="2" height="18" viewBox="0 0 2 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 1.5V16.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="min-height" id="toDo-container"
+                    ondragover="dragover_handler(event); highlightArea('to-do-container-drag-area')"
+                    ondrop="drop_handler('toDo')">
+                </div>
+                <div id="to-do-container-drag-area" class="drag-area d-none"
+                    ondrop="drop_handler('toDo'); removeHighlightDragArea('to-do-container-drag-area')"
+                    ondragleave="removeHighlightArea('to-do-container-drag-area')"
+                    ondragover="dragover_handler(event); highlightArea('to-do-container-drag-area')">
+                </div>
+            </div>
+            <div>
+                <div href="./add_task.html" class="board-headlines" onclick="saveTaskStatusFromBoard('inProgress')">
+                    <p>In progress</p>
+                    <div>
+                        <svg width="18" height="3" viewBox="0 0 18 3" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.5 1.1416L1.5 1.1416" stroke="#2A3647" stroke-width="2"
+                                stroke-linecap="round" />
+                        </svg>
+                        <svg width="2" height="18" viewBox="0 0 2 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 1.5V16.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="min-height" id="inProgress-container"
+                    ondragover="dragover_handler(event); highlightArea('in-progress-container-drag-area')"
+                    ondrop="drop_handler('inProgress')">
+                </div>
+                <div id="in-progress-container-drag-area" class="drag-area d-none"
+                    ondrop="drop_handler('inProgress'); removeHighlightDragArea('in-progress-container-drag-area')"
+                    ondragleave="removeHighlightArea('in-progress-container-drag-area')"
+                    ondragover="dragover_handler(event); highlightArea('in-progress-container-drag-area')"></div>
+            </div>
+            <div>
+                <div href="./add_task.html" class="board-headlines" onclick="saveTaskStatusFromBoard('awaitingFeedback')">
+                    <p>Awaiting Feedback</p>
+                    <div>
+                        <svg width="18" height="3" viewBox="0 0 18 3" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.5 1.1416L1.5 1.1416" stroke="#2A3647" stroke-width="2"
+                                stroke-linecap="round" />
+                        </svg>
+                        <svg width="2" height="18" viewBox="0 0 2 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 1.5V16.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="min-height" id="awaitingFeedback-container"
+                    ondragover="dragover_handler(event); highlightArea('awaiting-feedback-container-drag-area')"
+                    ondrop="drop_handler('awaitingFeedback')">
+                </div>
+                <div id="awaiting-feedback-container-drag-area" class="drag-area d-none"
+                    ondrop="drop_handler('awaitingFeedback'); removeHighlightDragArea('awaiting-feedback-container-drag-area')"
+                    ondragleave="removeHighlightArea('awaiting-feedback-container-drag-area')"
+                    ondragover="dragover_handler(event); highlightArea('awaiting-feedback-container-drag-area')"></div>
+            </div>
+            <div>
+                <div href="./add_task.html" class="board-headlines" onclick="saveTaskStatusFromBoard('done')">
+                    <p>Done</p>
+                    <div>
+                        <svg width="18" height="3" viewBox="0 0 18 3" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.5 1.1416L1.5 1.1416" stroke="#2A3647" stroke-width="2"
+                                stroke-linecap="round" />
+                        </svg>
+                        <svg width="2" height="18" viewBox="0 0 2 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 1.5V16.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="min-height" id="done-container"
+                    ondragover="dragover_handler(event); highlightArea('done-container-drag-area')"
+                    ondrop="drop_handler('done')">
+                </div>
+                <div id="done-container-drag-area" class="drag-area d-none"
+                    ondrop="drop_handler('done'); removeHighlightDragArea('done-container-drag-area')"
+                    ondragleave="removeHighlightArea('done-container-drag-area')"
+                    ondragover="dragover_handler(event); highlightArea('done-container-drag-area')"></div>
+            </div>
+        </div>
+    </main>
+    <footer w3-include-html="templates/footer.html">
+    </footer>
+</body>
+
+</html>

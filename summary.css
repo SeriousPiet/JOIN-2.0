@@ -1,0 +1,305 @@
+html {
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.header-container h1 {
+    font-weight: 700;
+    font-size: 60px;
+}
+
+.blue-line-vertical {
+    width: 3px;
+    height: 60px;
+    background-color: #29ABE2;
+    margin: 0 30px 0 60px;
+}
+
+.header-container h2 {
+    font-size: 24px;
+    color: #2A3647;
+}
+
+.blue-line-horizontal {
+    display: none;
+    width: 90px;
+    height: 3px;
+    background-color: #29ABE2;
+    margin-top: 10px;
+}
+
+.main-container {
+    display: flex;
+    justify-content: center;
+}
+
+.task-container,
+.todo-container {
+    display: flex;
+    gap: 35px;
+}
+
+.task-container {
+    margin-bottom: 35px;
+}
+
+.task,
+.urgency,
+.todo {
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    box-shadow: 0px 0px 4px 0px rgb(0, 0, 0, 0.1);
+    transition: 125ms ease-in-out;
+}
+
+.task {
+    justify-content: center;
+    width: 150px;
+    height: 150px;
+    flex-direction: column;
+}
+
+.task h1,
+.todo h1 {
+    font-weight: 600;
+    font-size: 64px;
+    margin: 20px 0 0 0;
+}
+
+.urgent-date h2 {
+    margin-bottom: 10px;
+}
+
+.task p,
+.urgent p,
+.urgent-date p,
+.todo p {
+    color: #2A3647;
+    margin-top: 0;
+    text-align: center;
+}
+
+.task:hover,
+.urgency:hover,
+.todo:hover {
+    background-color: #2A3647;
+    color: white;
+}
+
+.task:hover {
+    transform: scale(1.059);
+}
+
+.urgency:hover {
+    transform: scale(1.017, 1.067);
+}
+
+.todo:hover {
+    transform: scale(1.037, 1.067);
+}
+
+.task:hover p,
+.urgency:hover p,
+.todo:hover p {
+    color: white;
+}
+
+.urgency {
+    display: flex;
+    align-items: center;
+    width: 520px;
+    height: 140px;
+    margin-bottom: 35px;
+}
+
+.urgent {
+    display: flex;
+    align-items: center;
+}
+
+.urgent img {
+    margin: 0 20px 0 50px;
+}
+
+.urgent h1 {
+    font-size: 48px;
+    font-weight: 600;
+    margin: 10px 0 0 0;
+}
+
+.grey-line {
+    width: 1px;
+    height: 100px;
+    background-color: #D1D1D1;
+    margin: 0 40px;
+}
+
+.todo {
+    justify-content: center;
+    width: 242.5px;
+    height: 140px;
+}
+
+.todo svg {
+    margin-right: 20px;
+}
+
+.todo:hover svg circle {
+    fill: white;
+}
+
+.check:hover svg path {
+    stroke: black;
+}
+
+.pencil:hover svg path {
+    fill: black;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.greeting-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 60px;
+}
+
+.greeting-time {
+    font-size: 36px;
+    color: #2A3647;
+}
+
+.greeting-name {
+    font-size: 48px;
+    font-weight: 700;
+    color: #29ABE2;
+}
+
+
+@media only screen and (max-width: 1400px) {
+    .greeting-container {
+        align-items: center;
+        position: fixed;
+        top: 85px;
+        left: 300px;
+        right: 0;
+        bottom: 0;
+        z-index: 9;
+        background-color: #F5F5F5;
+        padding-left: 0;
+    }
+}
+
+
+@media only screen and (max-width: 1000px) {
+    .greeting-container {
+        left: 0;
+        bottom: 75px;
+    }
+
+    .task-container,
+    .urgency {
+        margin-bottom: 20px;
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-container h1 {
+        font-size: 48px;
+        padding: 10px 0;
+    }
+
+    .blue-line-vertical {
+        display: none;
+    }
+
+    .blue-line-horizontal {
+        display: block;
+    }
+
+    .task-container,
+    .todo-container {
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    .task {
+        width: 100px;
+        height: 100px;
+    }
+
+    .task h1,
+    .todo h1 {
+        font-size: 46px;
+        margin-top: 10px;
+    }
+    
+    .task p,
+    .urgent p,
+    .urgent-date p,
+    .todo p {
+        font-size: 12px;
+    }
+
+    .urgency {
+        width: 320px;
+        height: 100px;
+        margin-bottom: 10px;
+    }
+
+    .urgent img {
+        width: 40px;
+        height: 40px;
+        margin: 0 15px 0 25px;
+    }
+
+    .grey-line {
+        margin: 0 25px;
+    }
+
+    .urgent-date h2 {
+        font-size: 14px;
+    }
+
+    .todo {
+        width: 155px;
+        height: 100px;
+    }
+
+    .todo svg {
+        width: 40px;
+        height: 40px;
+    }
+
+    .greeting-time {
+        font-size: 30px;
+    }
+    
+    .greeting-name {
+        font-size: 36px;
+    }
+}

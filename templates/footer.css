@@ -1,0 +1,144 @@
+
+#legalnotice {
+    display: none;
+}
+
+#logo {
+    display: none;
+}
+
+.footer-main-menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#summary-btn,
+#board-btn,
+#add-task-btn,
+#contacts-btn {
+    display: grid;
+    grid-template-columns: 80px;
+    grid-template-rows: 45px;
+    height: 100%;
+    padding: 8px 0;
+}
+
+.footer-main-menu>a>img {
+    justify-self: center;
+    align-self: center;
+}
+
+.footer-main-menu>a>p {
+    justify-self: center;
+    white-space: nowrap;
+}
+
+.footer-main-menu>div>img {
+    justify-self: center;
+    align-self: center;
+}
+
+.footer-main-menu>div>p {
+    justify-self: center;
+    white-space: nowrap;
+}
+
+.background-color {
+    background-color: #091931;
+    color: white !important;
+}
+
+@media only screen and (min-width: 1000px) {
+
+    #summary-btn,
+    #board-btn,
+    #add-task-btn,
+    #contacts-btn {
+        display: grid;
+        grid-template-columns: 40px 100px;
+        grid-template-rows: 45px;
+        gap: 15px 10px;
+        width: 100%;
+        padding-left: 30%;
+    }
+
+    #logo {
+        display: flex;
+        margin-top: 50px;
+        margin-bottom: 80px;
+    }
+
+    #legalnotice {
+        display: flex;
+        margin-bottom: 32px;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        padding: 14px;
+    }
+
+    .legalnotice-menu {
+        margin-bottom: 32px;
+    }
+
+    #legalnotice>p {
+        margin-left: 12px;
+    }
+
+    .footer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+    }
+
+
+    .footer>div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+    }
+
+    .legalnotice-menu {
+        justify-content: flex-end !important;
+    }
+
+    .footer-main-menu {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0px;
+    }
+
+    .footer-main-menu>a>img {
+        justify-self: center;
+    }
+
+    .footer-main-menu>a>p {
+        justify-self: start;
+        align-self: center;
+    }
+
+    .footer-main-menu>div>img {
+        justify-self: center;
+    }
+
+    .footer-main-menu>div>p {
+        justify-self: start;
+        align-self: center;
+    }
+
+    .footer-main-menu>div:hover {
+        cursor: pointer;
+    }
+
+
+}
+

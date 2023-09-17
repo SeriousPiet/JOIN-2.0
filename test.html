@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./mini_backend.js"></script>
+
+    <script>
+        let users = [];
+        setURL('https://gruppenarbeit-479-join.developerakademie.net/smallest_backend_ever');
+
+        async function init() {
+            await downloadFromServer();
+            users = JSON.parse(backend.getItem('users')) || [];
+        }
+
+
+        function addUser() {
+            let name = document.getElementById('name');
+            let email = document.getElementById('email');
+
+            let newContact = {
+                'name': name.value,
+                'email': email.value,
+            }
+            users.push(newContact);
+            backend.setItem('users', JSON.stringify(users));
+        }
+    </script>
+</head>
+
+<body onload="init()">
+    <form onclick="addUser()">
+        <input type="text" id="name">
+        <input type="text" id="email">
+        <button>Add</button>
+    </form>
+</body>
+
+</html>

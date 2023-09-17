@@ -1,0 +1,182 @@
+.header {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 32px;
+    background: #FFFFFF;
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+#headline {
+    display: none;
+}
+
+.header-menu-container {
+    display: flex;
+    align-items: center;
+}
+
+.header-menu-container>a {
+    display: none;
+}
+
+.user-iconB {
+    border-radius: 50%;
+    border: 3px solid #2A3647;
+}
+
+.hover:hover {
+    cursor: pointer;
+}
+
+#header-extended-menu-container {
+    display: flex;
+    justify-content: flex-end;
+    z-index: 999;
+    position: relative;
+}
+
+
+#header-extended-menu-container>div {
+    position: absolute;
+    margin-right: 29px;
+    padding: 4px 24px;
+    background: #2A3647;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 20px 0px 20px 20px;
+    top: 76px;
+    
+}
+
+#header-extended-menu-container>div>div {
+    position: relative;
+    z-index: 999;
+    margin: 12px 0;
+}
+
+#header-extended-menu-container>div>div:hover {
+    cursor: pointer;
+}
+
+
+/* --------------- General Styling --------------- */
+
+a {
+    text-decoration: none;
+    color: #CDCDCD;
+}
+
+.d-none {
+    display: none !important;
+}
+
+
+/* --------------- Slide Effect --------------- */
+
+.slide-in {
+    animation: Slide-left 0.2s ease-in-out;
+}
+
+@keyframes Slide-left {
+    0% {
+        transform: translateX(300px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.slide-out {
+    animation: Slide-right 0.25s ease-in-out;
+}
+
+@keyframes Slide-right {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(400px);
+    }
+}
+
+
+@media only screen and (min-width: 1000px) {
+
+    .header {
+        margin-left: 300px;
+        right: 0;
+        width: auto;
+    }
+    
+    #mobile-logo {
+        display: none;
+    }
+
+    .header-menu-container>a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 16px;
+    }
+
+    #headline {
+        display: flex;
+        margin-left: 50px;
+    }
+
+    .headline-mobile-container {
+        display: none;
+    }
+
+    #help-btn {
+        display: none;
+    }
+
+    #legal-notice-btn {
+        display: none;
+    }
+
+    .slide-in{
+        animation: none;
+    }
+
+    #header-extended-menu-container>div {
+        padding: 0px 24px;
+    }
+
+    
+.slide-inA {
+    animation: Slide-left 0.2s ease-in-out;
+}
+
+@keyframes Slide-left {
+    0% {
+        transform: translateX(600px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.slide-outA {
+    animation: Slide-right 0.25s ease-in-out;
+}
+
+@keyframes Slide-right {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(600px);
+    }
+}
+}

@@ -1,0 +1,362 @@
+/*Responsivemode*/
+
+@media only screen and (max-width: 700px) {
+  .pageOneContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .capaOneContainer {
+    position: absolute;
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    background-color: #2a3647;
+    opacity: 1;
+    transition: opacity 1s;
+    z-index: 2;
+  }
+
+  .capaOne {
+    position: fixed;
+    height: 122px;
+    width: 100px;
+    z-index: 3;
+  }
+
+  .capaOneWhite {
+    position: fixed;
+    height: 122px;
+    width: 100px;
+    z-index: 4;
+    opacity: 1;
+    transition: opacity 1s;
+  }
+
+  .ausblenden {
+    opacity: 0;
+  }
+
+  @keyframes centerToCorner {
+    0% {
+      height: 122px;
+      width: 100px;
+      left: 38.32%;
+      right: 38.31%;
+      top: 43.41%;
+      bottom: 43.42%;
+    }
+    100% {
+      width: 64px;
+      height: 78px;
+      left: 32px;
+      top: 42px;
+    }
+  }
+
+  .notAJoinUser {
+    position: unset;
+    padding: 0px;
+    width: 287px;
+    height: 51px;
+    order: 1;
+  }
+
+  .loginContainer {
+    width: 90%;
+    order: 0;
+  }
+
+  .loginHeadline {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 47px;
+    line-height: 120%;
+  }
+
+  .line {
+    width: 90px;
+  }
+
+  .emailPassword {
+    padding: 0px;
+    gap: 29px;
+    width: 327px;
+    height: 100px;
+  }
+
+  .inputBox {
+    position: relative;
+    padding: 13px 21px;
+    gap: 10px;
+    width: 300px;
+    height: 41px;
+  }
+
+  .email {
+    padding: 0px;
+    gap: 10px;
+    width: 240px;
+    height: 25px;
+  }
+
+  .password {
+    padding: 0px;
+    gap: 10px;
+    width: 240px;
+    height: 25px;
+  }
+
+  .cursorPointer {
+    cursor: pointer;
+  }
+
+  .remember {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 31px;
+    width: 300px;
+    height: 69px;
+  }
+
+  .remember a {
+    order: 0;
+  }
+
+  .rememberMe {
+    order: 1;
+  }
+
+  .MemberOrGuest {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 21px;
+    width: 180px;
+    height: 123px;
+    flex: none;
+    order: 3;
+    flex-grow: 0;
+  }
+
+  .memberLogin {
+    padding: 4px 0px;
+    gap: 10px;
+    width: 180px;
+    height: 51px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+  }
+
+  .guestLogin {
+    padding: 4px 0px;
+    gap: 10px;
+    width: 180px;
+    height: 51px;
+    font-size: 16px;
+  }
+
+  /*Sign-Up-Page*/
+
+  .signUpContainer {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: 60%;
+  }
+
+  .signUpHeadlineContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: center;
+    width: 100%;
+    order: 0;
+  }
+
+  .signUpHeadline {
+    position: relative;
+    right: 1px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 47px;
+    line-height: 120%;
+    text-align: center;
+  }
+
+  .backArrowContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    right: 55px;
+    width: 16px;
+    height: 16px;
+  }
+
+  .backArrow {
+    width: 16px;
+    height: 16px;
+  }
+
+  .backArrow:hover {
+    cursor: pointer;
+  }
+
+  .signUpInput {
+    padding: 0px;
+    gap: 30px;
+    width: 80%;
+    height: 240px;
+    order: 1;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+
+  .name {
+    padding: 0px;
+    gap: 10px;
+    width: 255px;
+    height: 25px;
+  }
+
+  .signUpButtonContainer {
+    display: flex;
+    justify-content: center;
+    padding: 4px 0px;
+    gap: 10px;
+    width: 100%;
+    height: 51px;
+    order: 2;
+  }
+  
+  .figur {
+    position: absolute;
+    right: 2%;
+  }
+
+  .signUp {
+    width: 180px;
+    height: 51px;
+    font-size: 16px;
+  }
+
+  /*Forgotten Password*/
+
+  .forgottenPWContainer {
+    position: relative;
+    padding: 56px 0px;
+    width: 90%;
+    height: unset;
+  }
+
+  .forgottenPWHeadlineContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 96px;
+  }
+
+  .forgottenPWHeadline {
+    font-size: 40px;
+    right: unset;
+    line-height: 120%;
+  }
+
+  .backforgottenPWArrowContainer {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 16px;
+    height: 16px;
+  }
+
+  .forgottenPWContent {
+    width: 80%;
+    margin-bottom: 10%;
+  }
+
+  .forgottenPWInput {
+    padding: 13px 21px;
+    gap: 10px;
+    width: 90%;
+    height: 41px;
+  }
+
+  .sendEmailContainer {
+    width: 100%;
+    height: 51px;
+    display: flex;
+
+  }
+
+  .sendEmail {
+    padding: 4px 0px;
+    gap: 10px;
+    width: 180px;
+    height: 51px;
+    font-size: 16px;
+  }
+  /*Reset Password*/
+
+  .resetPWContainer {
+    width: 372px;
+    height: 525px;
+  }
+
+  .resetPWHeadlineContainer {
+    width: 315px;
+    height: 96px;
+  }
+
+  .resetPWHeadline {
+    font-size: 40px;
+    line-height: 120%;
+    right: 15px;
+  }
+
+  .backresetPWArrowContainer {
+    top: -10px;
+    right: 0px;
+    width: 16px;
+    height: 16px;
+  }
+
+  .resetPWContent {
+    width: 322px;
+    height: 50px;
+    padding: 13px 21px;
+    gap: 10px;
+  }
+
+  .resetPWInput {
+    padding: 13px 21px;
+    gap: 20px;
+    width: 327px;
+    height: 100px;
+  }
+
+  .continueContainer {
+    padding: 4px 0px;
+    gap: 10px;
+    width: 180px;
+    height: 51px;
+  }
+
+  .continue {
+    font-size: 16px;
+    width: 180px;
+    height: 51px;
+  }
+}

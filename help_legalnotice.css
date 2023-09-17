@@ -1,0 +1,49 @@
+.text-justify {
+    text-align: justify;
+}
+
+.help-h1 {
+    font-weight: 700;
+    font-size: 61px;
+    margin-bottom: 40px;
+}
+
+.help-h2 {
+    font-weight: 700;
+    font-size: 27px;
+}
+
+.text-ordered>div {
+    display: flex;
+}
+
+.list-item {
+    margin: 0 24px 0 0;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.arrow-icon-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.arrow-icon-container:hover {
+    cursor: pointer;
+}
+
+.margin-16 {
+    margin: 16px 0;
+}
+
+.margin-32 {
+    margin: 32px 0;
+}
+
+table {
+    border-collapse: separate;
+}
+
+.table-padding {
+    padding-bottom: 8px;
+}

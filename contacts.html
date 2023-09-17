@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/img/CapaOne.svg" type="image/x-icon">
+    <link rel="stylesheet" href="contacts.css">
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="./templates/footer.css">
+    <link rel="stylesheet" href="./templates/header.css">
+    <link rel="stylesheet" href="./template.css">
+    <link rel="stylesheet" href="add_task.css">
+    <link rel="stylesheet" href="board.css">
+    <script src="./mini_backend.js"></script>
+    <script src="./js/template.js"></script>
+    <script src="./js/add_task.js"></script>
+    <script src="./js/contactsHTML.js"></script>
+    <title>Join-Contacts</title>
+</head>
+
+
+<body id="body" onload="init(); includeHTML()">
+    <div id="overlay" class="d-none" onclick="removeOverlay()"></div>
+    <header w3-include-html="templates/header.html"></header>
+    <main>
+        <div class="headline-mobile-container">
+            <p id="headline-mobile">Kanban Project Management Tool</p>
+        </div>
+
+        <section class="contacts-container">
+            <section onclick="closeSingleContactDesktop()" id="contacts-field" class="contacts-field"></section>
+            <section id="contacts-details" class="contacts-details">
+                <div class="header-container">
+                    <h1>Contacts</h1>
+                    <div class="blue-line-vertical"></div>
+                    <h2>Better with a team</h2>
+                    <div class="blue-line-horizontal"></div>
+                </div>
+            </section>
+            <section>
+                <button onclick="addContactOpen()" id="contact-btn" class="contact-btn">New
+                    contact<img src="./assets/img/new-contact-icon.svg">
+                </button>
+                <div id="confirm" class="confirmation d-none">
+                    Contact succesfully created
+                </div>
+                <div id="confirmUpdate" class="confirmation d-none">
+                    Contact succesfully updated
+                </div>
+                <div id="confirmDelete" class="confirmation d-none">
+                    Contact succesfully deleted
+                </div>
+            </section>
+            <section onclick="addTaskClose()" id="addTaskOverlay" class="contact-overlay">
+                <div id="addTask" onclick="doNotClose(event)"></div>
+            </section>
+            <section onclick="addContactClose()" id="add-contact-overlay" class="contact-overlay">
+                <div onclick="doNotClose(event)" id="add-contact" class="contact-container">
+                    <div class="contact-header">
+                        <img src="./assets/img/logo.svg">
+                        <h1>Add contact</h1>
+                        <h2>Task are better with a team!</h2>
+                        <div class="contact-blue-line"></div>
+                    </div>
+                    <div class="contact-field">
+                        <div class="contact-user-icon">
+                            <img src="./assets/img/new-user-icon.svg">
+                        </div>
+                        <div>
+                            <a onclick="addContactClose()" class="contact-close">
+                                <svg width="31" height="31" viewBox="0 0 31 31" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M22.9616 7.65393L7.65388 22.9617" stroke="#2A3647" stroke-width="2"
+                                        stroke-linecap="round" />
+                                    <path d="M22.8172 23.1061L7.50941 7.79832" stroke="#2A3647" stroke-width="2"
+                                        stroke-linecap="round" />
+                                </svg>
+                            </a>
+                            <form onsubmit="addToContact(); return false;">
+                                <div class="contact-form">
+                                    <div class="input-container">
+                                        <img src="./assets/img/name-icon.svg">
+                                        <input type="text" placeholder="Full Name" id="name" class="input" required>
+                                    </div>
+                                    <div class="input-container">
+                                        <img src="./assets/img/email-icon.svg">
+                                        <input type="email" placeholder="Email" id="email" class="input" required>
+                                    </div>
+                                    <div class="input-container">
+                                        <img src="./assets/img/phone-icon.svg">
+                                        <input type="tel" placeholder="Phone" id="phone" pattern="^[+]?[0-9]{4,20}$"
+                                            class="input" required>
+                                    </div>
+                                </div>
+                                <div class="submit-container">
+                                    <button type="reset" class="submit-btn cancel">Cancel
+                                        <svg width="25" height="25" viewBox="0 0 25 25" fill="none">
+                                            <path
+                                                d="M12.501 12.5L17.744 17.743M7.258 17.743L12.501 12.5L7.258 17.743ZM17.744 7.25696L12.5 12.5L17.744 7.25696ZM12.5 12.5L7.258 7.25696L12.5 12.5Z"
+                                                stroke="#2A3647" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                    <button type="submit" class="submit-btn create">Create contact
+                                        <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M4 12.5L10 18.5L20 6.5" stroke="white" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section onclick="editContactClose()" id="edit-contact-overlay" class="contact-overlay">
+                <div onclick="doNotClose(event)" id="edit-contact" class="contact-container">
+                    <div class="contact-header">
+                        <img src="./assets/img/logo.svg">
+                        <h1>Edit contact</h1>
+                        <div class="contact-blue-line"></div>
+                    </div>
+                    <div id="contact-field-content"></div>
+                </div>
+            </section>
+
+            <section id="single-contact-overlay" class="single-contact-overlay">
+                <div id="show-contact" class="show-contact"></div>
+            </section>
+        </section>
+    </main>
+    <div class="bg-overlay" id="bg-overlay"></div>
+    <footer w3-include-html="templates/footer.html"></footer>
+
+    <script src="./js/contacts.js"></script>
+</body>
+
+</html>
