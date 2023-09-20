@@ -13,7 +13,7 @@ let urgentDate = [];
  * is used to load the content from the backend
  */
 async function init() {
-    setURL('https://kevin.rohlf.io/join/smallest_backend_ever');
+    setURL('https://peter-wallbaum.developerakademie.net/JOIN-2.0/smallest_backend_ever');
     await downloadFromServer();
     tasks = JSON.parse(backend.getItem('tasks')) || [];
     categorys = JSON.parse(backend.getItem('categorys')) || [];

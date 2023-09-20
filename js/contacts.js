@@ -8,7 +8,7 @@ let mobile = false;
  * is used to load content from backend server
  */
 async function init() {
-	setURL('https://kevin.rohlf.io/join/smallest_backend_ever');
+    setURL('https://peter-wallbaum.developerakademie.net/JOIN-2.0/smallest_backend_ever');
     await downloadFromServer();
 	contacts = JSON.parse(backend.getItem('contacts')) || [];
 	renderContacts2();

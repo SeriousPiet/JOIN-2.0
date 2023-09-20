@@ -4,7 +4,7 @@ let emailAlreadyInUse = false;
 let currentUser;
 
 async function initRegistration() {
-  setURL('https://kevin.rohlf.io/join/smallest_backend_ever');
+  setURL('https://peter-wallbaum.developerakademie.net/JOIN-2.0/smallest_backend_ever');
   await downloadFromServer();
   users = JSON.parse(backend.getItem("users")) || [];
 }
@@ -37,7 +37,6 @@ function checkEmailisAlreadyTaken(name, email, password) {
 
 
 async function emailNotInUse(name, email, password) {
-
   showMessage('errorLogin', 'user successfull created', 'right')
   users.push({
     name: name.value,
