@@ -144,7 +144,7 @@ body {
   width: 422px;
   height: 51px;
   background: #ffffff;
-  border: 1px solid #d1d1d1;
+  border: 1px solid black;
   border-radius: 10px;
   flex: none;
   order: 0;
@@ -165,7 +165,7 @@ body {
   font-weight: 400;
   font-size: 21px;
   line-height: 120%;
-  color: #d1d1d1;
+  color: black;
   border-width: 0;
   outline: none;
 }
@@ -184,7 +184,7 @@ body {
   font-weight: 400;
   font-size: 21px;
   line-height: 120%;
-  color: #d1d1d1;
+  color: black;
   border-width: 0;
   outline: none;
 }
@@ -407,7 +407,7 @@ body {
   font-weight: 400;
   font-size: 21px;
   line-height: 120%;
-  color: #d1d1d1;
+  color: black;
   border-width: 0;
   outline: none;
 }
