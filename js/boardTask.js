@@ -1,3 +1,7 @@
+let text;
+let svgPath1;
+let svgPath2;
+
 /**
  * Description: Loads the edit task interface for the task at the specified index, including rendering task details, contacts, and highlighting priority.
  * @param {number} i - The index of the task to be edited.
@@ -110,94 +114,126 @@ async function updateInput(i) {
  * @param {number} i - The index of the task to highlight its priority.
  */
 function highlightPrio(i) {
-  if (tasks[i].prio == "low") taskPrioLow();
-  else taskPrioNotLow();
-  if (tasks[i].prio == "medium") taskPrioMedium();
-  else taskPrioNotMedium();
-  if (tasks[i].prio == "urgent") taskPrioUrgent();
-  else taskPrioNotUrgent();
+  if (tasks[i].prio == "low") taskPrioChecked("prio-area-low", "y");
+  else taskPrioChecked("prio-area-low", "n");
+  if (tasks[i].prio == "medium") taskPrioChecked("prio-area-medium", "y");
+  else taskPrioChecked("prio-area-medium", "n");
+  if (tasks[i].prio == "urgent") taskPrioChecked("prio-area-urgent", "y");
+  else taskPrioChecked("prio-area-urgent", "n");
 }
 
 /**
  * Description: Applies styles to highlight a task with low priority.
  */
-function taskPrioLow() {
-  let content = document.getElementById("prio-area-low");
-  content.style = "background-color:#7AE229";
-  contentSummary(content)
-  text.style.color = "#FFFFFF";
-  svgPath1.style.fill = "#FFFFFF";
-  svgPath2.style.fill = "#FFFFFF";
+function taskPrioChecked(priorityArea, colored) {
+  let content = document.getElementById(priorityArea);
+  checkForPrioArea(priorityArea, content);
+  if (colored == "y") {
+    taskPrioPickColor(priorityArea, content, text, svgPath1, svgPath2);
+  } else {
+    taskPrioPickWhite(priorityArea, content, text, svgPath1, svgPath2);
+  }
 }
 
 /**
- * Description: Removes the highlight styles for a task with low priority.
+ * Description: Checks for priority area elements in the DOM and returns specific child elements based on the priority area.
+ *
+ * @param {string} priorityArea - The priority area identifier, e.g., "prio-area-low".
+ * @param {HTMLElement} content - The container element containing priority area elements.
+ * @returns {Object} An object containing child elements based on the priority area.
+ * @property {HTMLElement} text - The text element related to the priority area.
+ * @property {HTMLElement} svgPath1 - The first SVG path element related to the priority area.
+ * @property {HTMLElement} svgPath2 - The second SVG path element related to the priority area.
  */
-function taskPrioNotLow() {
-  let content = document.getElementById("prio-area-low");
+function checkForPrioArea(priorityArea, content) {
+  if (priorityArea == "prio-area-low") {
+    text = content.children[0];
+    svgPath1 = content.children[1].children[0];
+    svgPath2 = content.children[1].children[1];
+  } else {
+    text = content.children[0];
+    svgPath1 = content.children[1].children[0].children[0];
+    svgPath2 = content.children[1].children[0].children[1];
+  }
+}
+
+/**
+ * Description: Sets the priority area elements to white background color and updates their styles.
+ *
+ * @param {string} priorityArea - The priority area identifier, e.g., "prio-area-low".
+ * @param {HTMLElement} content - The container element containing priority area elements.
+ * @param {HTMLElement} text - The text element related to the priority area.
+ * @param {HTMLElement} svgPath1 - The first SVG path element related to the priority area.
+ * @param {HTMLElement} svgPath2 - The second SVG path element related to the priority area.
+ */
+function taskPrioPickWhite(priorityArea, content, text, svgPath1, svgPath2) {
   content.style = "background-color:#FFFFFF";
-  contentSummary(content)
+  if (priorityArea == "prio-area-low") {
+    taskPrioLow(text, svgPath1, svgPath2);
+  } else if (priorityArea == "prio-area-medium") {
+    taskPrioMedium(text, svgPath1, svgPath2);
+  } else if (priorityArea == "prio-area-urgent") {
+    taskPrioUrgent(text, svgPath1, svgPath2);
+  }
+}
+
+/**
+ * Description: Updates the styles of the provided elements to indicate low priority.
+ *
+ * @param {HTMLElement} text - The text element to style.
+ * @param {HTMLElement} svgPath1 - The first SVG path element to style.
+ * @param {HTMLElement} svgPath2 - The second SVG path element to style.
+ */
+function taskPrioLow(text, svgPath1, svgPath2) {
   text.style.color = "#7AE229";
   svgPath1.style.fill = "#7AE229";
   svgPath2.style.fill = "#7AE229";
 }
 
 /**
- * Description: Applies styles to highlight a task with medium priority.
+ * Description: Updates the styles of the provided elements to indicate medium priority.
+ *
+ * @param {HTMLElement} text - The text element to style.
+ * @param {HTMLElement} svgPath1 - The first SVG path element to style.
+ * @param {HTMLElement} svgPath2 - The second SVG path element to style.
  */
-function taskPrioMedium() {
-  let content = document.getElementById("prio-area-medium");
-  content.style = "background-color:#FFA800";
-  contentSummary(content)
-  text.style.color = "#FFFFFF";
-  svgPath1.style.fill = "#FFFFFF";
-  svgPath2.style.fill = "#FFFFFF";
-}
-
-/**
- * Description: Removes the highlight styles for a task with medium priority.
- */
-function taskPrioNotMedium() {
-  let content = document.getElementById("prio-area-medium");
-  content.style = "background-color:#FFFFFF";
-  contentSummary(content)
+function taskPrioMedium(text, svgPath1, svgPath2) {
   text.style.color = "#FFA800";
   svgPath1.style.fill = "#FFA800";
   svgPath2.style.fill = "#FFA800";
 }
 
 /**
- * Description: Applies styles to highlight a task with urgent priority.
+ * Description: Updates the styles of the provided elements to indicate urgent priority.
+ *
+ * @param {HTMLElement} text - The text element to style.
+ * @param {HTMLElement} svgPath1 - The first SVG path element to style.
+ * @param {HTMLElement} svgPath2 - The second SVG path element to style.
  */
-function taskPrioUrgent() {
-  let content = document.getElementById("prio-area-urgent");
-  content.style = "background-color:#FF3D00";
-  contentSummary(content)
-  text.style.color = "#FFFFFF";
-  svgPath1.style.fill = "#FFFFFF";
-  svgPath2.style.fill = "#FFFFFF";
-}
-
-/**
- * Description: Removes the highlight styles for a task with urgent priority.
- */
-function taskPrioNotUrgent() {
-  let content = document.getElementById("prio-area-urgent");
-  content.style = "background-color:#FFFFFF";
-  contentSummary(content)
+function taskPrioUrgent(text, svgPath1, svgPath2) {
   text.style.color = "#FF3D00";
   svgPath1.style.fill = "#FF3D00";
   svgPath2.style.fill = "#FF3D00";
 }
 
 /**
- * Extracts specific child elements from a given content element.
- * @param {HTMLElement} content - The content element containing child elements.
- * @returns {Object} An object containing the extracted child elements.
+ * Description: Updates the styles of the provided elements based on the priority area.
+ *
+ * @param {string} priorityArea - The priority area identifier ("prio-area-low," "prio-area-medium," or "prio-area-urgent").
+ * @param {HTMLElement} content - The content element to style.
+ * @param {HTMLElement} text - The text element to style.
+ * @param {HTMLElement} svgPath1 - The first SVG path element to style.
+ * @param {HTMLElement} svgPath2 - The second SVG path element to style.
  */
-function contentSummary(content) {
-  let text = content.children[0];
-  let svgPath1 = content.children[1].children[0].children[0];
-  let svgPath2 = content.children[1].children[0].children[1];
-  return   text, svgPath1, svgPath2;
+function taskPrioPickColor(priorityArea, content, text, svgPath1, svgPath2) {
+  if (priorityArea == "prio-area-low") {
+    content.style = "background-color:#7AE229";
+  } else if (priorityArea == "prio-area-medium") {
+    content.style = "background-color:#FFA800";
+  } else if (priorityArea == "prio-area-urgent") {
+    content.style = "background-color:#FF3D00";
+  }
+  text.style.color = "#FFFFFF";
+  svgPath1.style.fill = "#FFFFFF";
+  svgPath2.style.fill = "#FFFFFF";
 }

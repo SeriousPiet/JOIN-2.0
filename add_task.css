@@ -198,6 +198,7 @@ textarea:focus, input:focus{
 
 .content-add-task span {
     font-weight: bold;
+    margin-top: 20px;
 }
 
 .content-add-task h1 {

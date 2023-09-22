@@ -24,6 +24,8 @@ async function addUsers() {
   let name = document.getElementById("name");
   let email = document.getElementById("signUpEmail");
   let password = document.getElementById("signUpPassword");
+  let initialsColor = getColor();
+  let initials = getInitials(name.value);
   emailAlreadyInUse = false;
   for (let i = 0; i < users.length; i++) {
     if (users[i].email.includes(email.value)) {
@@ -31,7 +33,7 @@ async function addUsers() {
     }
   }
   if (!emailAlreadyInUse) {
-    await emailNotInUse(name, email, password);
+    await emailNotInUse(name, email, password, initials, initialsColor);
   }
 }
 
@@ -50,17 +52,52 @@ function checkEmailisAlreadyTaken(name, email, password) {
 }
 
 /**
+ * Description: Generates a random hexadecimal color code in the format #RRGGBB, where RR, GG, and BB are two-digit hexadecimal values representing the red, green, and blue components of the color, respectively.
+ * @returns {string} - A randomly generated color code.
+ */
+function getColor() {
+  return (
+    "#" +
+    Math.floor(Math.random() * 16777215)
+      .toString(16)
+      .padStart(6, "0")
+      .toUpperCase()
+  );
+}
+
+/**
+ * Description: Generates initials from a full name by taking the first letter of the first name and the first letter of the last name (if available) and converting them to uppercase.
+ * @param {string} fullName - The full name from which initials are generated.
+ * @returns {string} - The initials generated from the full name.
+ */
+function getInitials(fullName) {
+  let names = fullName.toString().split(" ");
+  if (names.length === 1) {
+    initials =
+      names[0].substring(0, 1).toUpperCase() + names[0].substring(1, 2);
+  } else {
+    initials =
+      names[0].substring(0, 1).toUpperCase() +
+      names[names.length - 1].substring(0, 1).toUpperCase();
+  }
+  return initials;
+}
+
+/**
  * Description: Handles user registration when the provided email is not already in use.
  * @param {HTMLElement} name - The input field for the user's name.
  * @param {HTMLElement} email - The input field for the user's email.
  * @param {HTMLElement} password - The input field for the user's password.
+ * @param {HTMLElement} initials - The input field for the user's initials.
  */
-async function emailNotInUse(name, email, password) {
+async function emailNotInUse(name, email, password, initials, initialsColor) {
   showMessage("errorLogin", "user successfull created", "right");
   users.push({
     name: name.value,
     email: email.value,
     password: password.value,
+    initials: initials,
+    color: initialsColor,
   });
   await backend.setItem("users", JSON.stringify(users));
   render("none", "flex", "flex", "none", "none");
@@ -96,7 +133,11 @@ function login() {
  */
 function loginSuccess(i) {
   currentUser = users[i]["name"];
+  currentUserColor = users[i]["color"];
+  currentUserInitials = users[i]["initials"];
   localStorage.setItem("currentUser", JSON.stringify(currentUser));
+  localStorage.setItem("currentUserColor", JSON.stringify(currentUserColor));
+  localStorage.setItem("currentUserInitials", JSON.stringify(currentUserInitials));
   window.document.location.href = "./summary.html";
 }
 

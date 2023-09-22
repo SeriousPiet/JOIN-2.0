@@ -121,7 +121,7 @@ function greeting() {
   else if (hrs >= 18 && hrs <= 24) greet = "Good Evening";
 
   document.getElementById("greeting").innerHTML = greet;
-  document.getElementById("greetingName").innerHTML = getNameLogin();
+  document.getElementById("greetingName").innerHTML = getNameLogin();;
 }
 
 /**

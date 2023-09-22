@@ -31,7 +31,8 @@ function includeHTML() {
       return;
     }
   }
-  manipulateFooterColor()
+  manipulateFooterColor();
+  getUsersIinitials();
 }
 
 /**
@@ -120,6 +121,18 @@ function manipulateFooterColor() {
   manipulateColor(addTask, 'add_task')
   manipulateColor(contacts, 'contacts')
   manipulateColor(legalnotice, 'legalnotice')
+}
+
+function getUsersIinitials() {
+  let user = JSON.parse(localStorage.getItem("currentUser"));
+  let usersColor = JSON.parse(localStorage.getItem("currentUserColor"));
+  let usersInitials = JSON.parse(localStorage.getItem("currentUserInitials"));
+  document.getElementById("userIcon").style.backgroundColor = usersColor;
+  if (usersInitials) {
+  document.getElementById("userIcon").innerHTML += `${usersInitials}`;}
+  else {
+  document.getElementById("userIcon").innerHTML += `${user}`;
+  }
 }
 
 /**
