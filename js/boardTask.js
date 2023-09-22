@@ -124,9 +124,7 @@ function highlightPrio(i) {
 function taskPrioLow() {
   let content = document.getElementById("prio-area-low");
   content.style = "background-color:#7AE229";
-  let text = content.children[0];
-  let svgPath1 = content.children[1].children[0];
-  let svgPath2 = content.children[1].children[1];
+  contentSummary(content)
   text.style.color = "#FFFFFF";
   svgPath1.style.fill = "#FFFFFF";
   svgPath2.style.fill = "#FFFFFF";
@@ -138,9 +136,7 @@ function taskPrioLow() {
 function taskPrioNotLow() {
   let content = document.getElementById("prio-area-low");
   content.style = "background-color:#FFFFFF";
-  let text = content.children[0];
-  let svgPath1 = content.children[1].children[0];
-  let svgPath2 = content.children[1].children[1];
+  contentSummary(content)
   text.style.color = "#7AE229";
   svgPath1.style.fill = "#7AE229";
   svgPath2.style.fill = "#7AE229";
@@ -152,9 +148,7 @@ function taskPrioNotLow() {
 function taskPrioMedium() {
   let content = document.getElementById("prio-area-medium");
   content.style = "background-color:#FFA800";
-  let text = content.children[0];
-  let svgPath1 = content.children[1].children[0].children[0];
-  let svgPath2 = content.children[1].children[0].children[1];
+  contentSummary(content)
   text.style.color = "#FFFFFF";
   svgPath1.style.fill = "#FFFFFF";
   svgPath2.style.fill = "#FFFFFF";
@@ -166,9 +160,7 @@ function taskPrioMedium() {
 function taskPrioNotMedium() {
   let content = document.getElementById("prio-area-medium");
   content.style = "background-color:#FFFFFF";
-  let text = content.children[0];
-  let svgPath1 = content.children[1].children[0].children[0];
-  let svgPath2 = content.children[1].children[0].children[1];
+  contentSummary(content)
   text.style.color = "#FFA800";
   svgPath1.style.fill = "#FFA800";
   svgPath2.style.fill = "#FFA800";
@@ -180,9 +172,7 @@ function taskPrioNotMedium() {
 function taskPrioUrgent() {
   let content = document.getElementById("prio-area-urgent");
   content.style = "background-color:#FF3D00";
-  let text = content.children[0];
-  let svgPath1 = content.children[1].children[0].children[0];
-  let svgPath2 = content.children[1].children[0].children[1];
+  contentSummary(content)
   text.style.color = "#FFFFFF";
   svgPath1.style.fill = "#FFFFFF";
   svgPath2.style.fill = "#FFFFFF";
@@ -194,10 +184,20 @@ function taskPrioUrgent() {
 function taskPrioNotUrgent() {
   let content = document.getElementById("prio-area-urgent");
   content.style = "background-color:#FFFFFF";
-  let text = content.children[0];
-  let svgPath1 = content.children[1].children[0].children[0];
-  let svgPath2 = content.children[1].children[0].children[1];
+  contentSummary(content)
   text.style.color = "#FF3D00";
   svgPath1.style.fill = "#FF3D00";
   svgPath2.style.fill = "#FF3D00";
+}
+
+/**
+ * Extracts specific child elements from a given content element.
+ * @param {HTMLElement} content - The content element containing child elements.
+ * @returns {Object} An object containing the extracted child elements.
+ */
+function contentSummary(content) {
+  let text = content.children[0];
+  let svgPath1 = content.children[1].children[0].children[0];
+  let svgPath2 = content.children[1].children[0].children[1];
+  return   text, svgPath1, svgPath2;
 }

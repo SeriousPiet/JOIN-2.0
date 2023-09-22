@@ -45,7 +45,6 @@ function toggleLogoutBtn() {
   toggleLogoutBtnScreen(body, btn, slideContainer, overlay);
 }
 
-
 /**
  * Description: Toggles the visibility of the logout button and related elements on the screen.
  * @param {HTMLElement} body - The body element of the HTML document.
@@ -84,7 +83,6 @@ function removeOverlay() {
   whenInnerWidth()
   whenAddTask()
 }
-
 
 /**
  * Description: Performs actions based on the window's inner width.
@@ -152,7 +150,6 @@ window.onresize = function () {
     }
   }
 }
-
 
 /**
  * Description: Clears the saved task status template and redirects to the "add_task.html" page.
