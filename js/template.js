@@ -1,40 +1,33 @@
 let savedTaskStatus;
 
 /**
- * is used to initialize the website
+ * Description: Initializes the web application.
  */
 function init() {
   includeHTML()
-
 }
 
 /**
- * is used to include the html pages
- * @returns 
+ * Description: This function searches for elements with the "w3-include-html" attribute, makes an HTTP request to fetch the specified HTML file, and inserts the content into the matching elements.
  */
 function includeHTML() {
   var z, i, elmnt, file, xhttp;
-  /* Loop through a collection of all HTML elements: */
   z = document.getElementsByTagName("*");
   for (i = 0; i < z.length; i++) {
     elmnt = z[i];
-    /*search for elements with a certain atrribute:*/
     file = elmnt.getAttribute("w3-include-html");
     if (file) {
-      /* Make an HTTP request using the attribute value as the file name: */
       xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4) {
           if (this.status == 200) { elmnt.innerHTML = this.responseText; }
           if (this.status == 404) { elmnt.innerHTML = "Page not found."; }
-          /* Remove the attribute, and call once more: */
           elmnt.removeAttribute("w3-include-html");
           includeHTML();
         }
       }
       xhttp.open("GET", file, true);
       xhttp.send();
-      /* Exit the function: */
       return;
     }
   }
@@ -42,7 +35,7 @@ function includeHTML() {
 }
 
 /**
- * is used to show /hide the logout button
+ * Description: Toggles the visibility of the logout button and related elements.
  */
 function toggleLogoutBtn() {
   let body = document.getElementById('body');
@@ -52,6 +45,14 @@ function toggleLogoutBtn() {
   toggleLogoutBtnScreen(body, btn, slideContainer, overlay);
 }
 
+
+/**
+ * Description: Toggles the visibility of the logout button and related elements on the screen.
+ * @param {HTMLElement} body - The body element of the HTML document.
+ * @param {HTMLElement} btn - The logout button element.
+ * @param {HTMLElement} slideContainer - The container for sliding elements.
+ * @param {HTMLElement} overlay - The overlay element.
+ */
 function toggleLogoutBtnScreen(body, btn, slideContainer, overlay){
   if (btn.classList.contains('d-none')) {
     setTimeout(() => {
@@ -70,7 +71,7 @@ function toggleLogoutBtnScreen(body, btn, slideContainer, overlay){
 }
 
 /**
- * This funciton is used to remove the overlay
+ * Description: Removes the overlay and related elements from the screen.
  */
 function removeOverlay() {
   setTimeout(() => {
@@ -86,7 +87,7 @@ function removeOverlay() {
 
 
 /**
- * This funciton is used to remove the overlay
+ * Description: Performs actions based on the window's inner width.
  */
 function whenInnerWidth() {
   if (window.innerWidth < 1000) {
@@ -96,7 +97,7 @@ function whenInnerWidth() {
 }
 
 /**
- * This funciton is used to remove the overlay
+ * Description: Performs actions related to the addition of a task.
  */
 function whenAddTask() {
   if (document.getElementById('add-task-byboard-container')) {
@@ -108,7 +109,7 @@ function whenAddTask() {
 }
 
 /**
- * is used to get the background color for the current page
+ * Description: Manipulates the color of footer buttons based on the current page.
  */
 function manipulateFooterColor() {
   let summary = document.getElementById('summary-btn');
@@ -124,7 +125,9 @@ function manipulateFooterColor() {
 }
 
 /**
- * is used to get the background color for the current page
+ * Description: Manipulates the color of an HTML element based on the current page.
+ * @param {HTMLElement} id - The HTML element to manipulate the color of.
+ * @param {string} div - The page identifier or keyword used to determine the active page.
  */
 function manipulateColor(id, div) {
   if (window.location.href.includes(div)) {
@@ -135,7 +138,7 @@ function manipulateColor(id, div) {
 }
 
 /**
- * is used to control appearance of the card container
+ * Description: A function that handles the window resize event and controls the visibility of the main content based on the window width and the presence of certain HTML elements.
  */
 window.onresize = function () {
   if (!document.getElementById('add-task-byboard-container')) {
@@ -152,7 +155,7 @@ window.onresize = function () {
 
 
 /**
- * is used to clear local storage status
+ * Description: Clears the saved task status template and redirects to the "add_task.html" page.
  */
 function clearSavedTaskStatusTemplate() {
   savedTaskStatus = ''
