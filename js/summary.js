@@ -13,7 +13,7 @@ let urgentDate = [];
  */
 async function init() {
   setURL(
-    "https://peter-wallbaum.developerakademie.net/JOIN-2.0/smallest_backend_ever"
+    "https://its-getting-serious.de/JOIN-2.0/smallest_backend_ever"
   );
   await downloadFromServer();
   tasks = JSON.parse(backend.getItem("tasks")) || [];

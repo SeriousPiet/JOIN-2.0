@@ -495,19 +495,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     .btns button:first-child {
         display: none;
     }
-    .btns {
-        position: fixed;
-        top: 10px;
-        right: 10px;
-        z-index: 2;
-    }
     
     .btn-bg-blue {
         padding: 10px;
-    }
-
-    .user-iconB {
-        display: none;
     }
 
     #taskAdded {

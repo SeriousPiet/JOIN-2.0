@@ -9,7 +9,7 @@ let currentUser;
  */
 async function initRegistration() {
   setURL(
-    "https://peter-wallbaum.developerakademie.net/JOIN-2.0/smallest_backend_ever"
+    "https://its-getting-serious.de/JOIN-2.0/smallest_backend_ever"
   );
   await downloadFromServer();
   users = JSON.parse(backend.getItem("users")) || [];
